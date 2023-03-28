@@ -67,7 +67,11 @@ Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_sram.c \
 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_iwdg.c \
 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c \
 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c \
-Core/Src/system_stm32f4xx.c
+Core/Src/system_stm32f4xx.c \
+UserCodes/Source/UserInterface.c \
+Drivers/ILI9341/ILI9341.c \
+Drivers/ILI9341/ILI9341Test.c \
+Drivers/ILI9341/Fonts/fonts.c
 
 # ASM sources
 ASM_SOURCES =  \
@@ -128,7 +132,9 @@ C_INCLUDES =  \
 -IDrivers/STM32F4xx_HAL_Driver/Inc \
 -IDrivers/STM32F4xx_HAL_Driver/Inc/Legacy \
 -IDrivers/CMSIS/Device/ST/STM32F4xx/Include \
--IDrivers/CMSIS/Include
+-IDrivers/CMSIS/Include \
+-IUserCodes/Include \
+-IDrivers/ILI9341
 
 
 # compile gcc flags

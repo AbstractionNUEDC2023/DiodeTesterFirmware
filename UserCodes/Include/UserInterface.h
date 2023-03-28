@@ -1,0 +1,8 @@
+#ifndef __NUEDC_FIRMWARE_DIODE_TESTER_USER_INTERFACE_HEADER__
+#define __NUEDC_FIRMWARE_DIODE_TESTER_USER_INTERFACE_HEADER__
+
+#include <ILI9341.h>
+
+void InitializeGUI(void);
+
+#endif
