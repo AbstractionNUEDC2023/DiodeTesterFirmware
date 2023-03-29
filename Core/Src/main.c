@@ -28,6 +28,8 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include <ILI9341.h>
+#include <DiodeTester.h>
 #include <Oscilloscope.h>
 #include <UserInterface.h>
 /* USER CODE END Includes */
@@ -50,7 +52,9 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-
+uint8_t Mode = 0;
+uint8_t Running = 0;
+uint8_t ModeChangeFlag = 0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -100,8 +104,8 @@ int main(void)
   MX_TIM11_Init();
   /* USER CODE BEGIN 2 */
   InitializeGUI();
-  InitializeOscilloscope();
     // Initialize GUI
+  InitializeOscilloscope();
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -110,7 +114,33 @@ int main(void)
   {
     HAL_IWDG_Refresh(&hiwdg);
     // Feed watchdog timer
-    OscilloscopeServiceFunction();
+    if(Mode == 0 && ModeChangeFlag == 0) {
+      if(Running == 1) {
+        OscilloscopeServiceFunction();
+        ILI9341DrawString(1, 5, "Status:RUN ", Font_07x10, RGB565_CYAN, RGB565_ORANGE);
+      } else
+        ILI9341DrawString(1, 5, "Status:STOP", Font_07x10, RGB565_CYAN, RGB565_ORANGE);
+    }
+    if(Mode == 1 && ModeChangeFlag == 0) {
+      if(Running == 1) {
+        ILI9341DrawString(1, 5, "Status:RUN ", Font_07x10, RGB565_CYAN, RGB565_ORANGE);
+        DiodeTestServiceFunction(4096);
+        ILI9341DrawString(1, 5, "Status:STOP", Font_07x10, RGB565_CYAN, RGB565_ORANGE);
+        Running = 0;
+      }
+    }
+    if(Mode == 0 && ModeChangeFlag == 1) {
+      StopDiodeTester();
+      InitializeGUI();
+      InitializeOscilloscope();
+      ModeChangeFlag = 0;
+    }
+    if(Mode == 1 && ModeChangeFlag == 1) {
+      StopOscilloscope();
+      InitializeGUI();
+      InitializeDiodeTester();
+      ModeChangeFlag = 0;
+    }
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

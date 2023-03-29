@@ -51,7 +51,25 @@ uint32_t msTickCount = 0;
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
+uint8_t swCnt = 0;
+void KeyScaner(void) {
+  if(HAL_GPIO_ReadPin(ModeSelect_GPIO_Port, ModeSelect_Pin) == GPIO_PIN_RESET) {
+    swCnt++;
+    if(swCnt >= 3) {
+      ModeChangeFlag = 1;
+      Mode = Mode == 0 ? 1 : 0;
+      swCnt = 0;
+    }
+  } else if(HAL_GPIO_ReadPin(RunStop_GPIO_Port, RunStop_Pin) == GPIO_PIN_RESET) {
+    swCnt++;
+    if(swCnt >= 3) {
+      Running = Running == 0 ? 1 : 0;
+      swCnt = 0;
+    }
+  } else {
+    swCnt = 0;
+  }
+}
 /* USER CODE END 0 */
 
 /* External variables --------------------------------------------------------*/
@@ -189,7 +207,7 @@ void SysTick_Handler(void)
   /* USER CODE END SysTick_IRQn 0 */
   HAL_IncTick();
   /* USER CODE BEGIN SysTick_IRQn 1 */
-
+  KeyScaner();
   /* USER CODE END SysTick_IRQn 1 */
 }
 

@@ -22,6 +22,7 @@
 #ifndef __MAIN_H
 #define __MAIN_H
 
+#include <stdint.h>
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -43,6 +44,9 @@ extern "C" {
 /* USER CODE BEGIN EC */
 extern uint8_t timIntStart;
 extern uint32_t msTickCount;
+extern uint8_t Mode;
+extern uint8_t Running;
+extern uint8_t ModeChangeFlag;
 /* USER CODE END EC */
 
 /* Exported macro ------------------------------------------------------------*/

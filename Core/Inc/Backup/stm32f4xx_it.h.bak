@@ -58,7 +58,7 @@ void SysTick_Handler(void);
 void TIM1_TRG_COM_TIM11_IRQHandler(void);
 void DMA2_Stream0_IRQHandler(void);
 /* USER CODE BEGIN EFP */
-
+void KeyScanerServicefunction(void);
 /* USER CODE END EFP */
 
 #ifdef __cplusplus

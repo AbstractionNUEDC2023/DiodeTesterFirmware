@@ -51,7 +51,11 @@ uint32_t msTickCount = 0;
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
+void KeyScanerServicefunction(void) {
+  if(HAL_GPIO_ReadPin(ModeSelect_GPIO_Port, ModeSelect_Pin) == GPIO_PIN_SET) {
+    
+  }
+}
 /* USER CODE END 0 */
 
 /* External variables --------------------------------------------------------*/
