@@ -18,7 +18,7 @@ void InitializeGUI(){
     ILI9341FillRectangle(0, 260, 240, 60, RGB565_ORANGE);
     ILI9341DrawString(1, 275, "VerticalGrid: 100mV/div", Font_07x10, RGB565_CYAN, RGB565_ORANGE);
     ILI9341DrawString(1, 263, "HorizontalGrid: 100uA/div", Font_07x10, RGB565_CYAN, RGB565_ORANGE);
-    ILI9341DrawString(1, 304, "Abstractiors' work", Font_11x18, RGB565_DARKCYAN, RGB565_ORANGE); 
+    ILI9341DrawString(1, 304, "@Abstraction", Font_11x18, RGB565_PINK, RGB565_ORANGE); 
     // Buttom Status Bar
     ILI9341DrawLine(20, 40, 20, 240, RGB565_ORANGE);
     ILI9341DrawLine(20, 40, 220, 40, RGB565_ORANGE);

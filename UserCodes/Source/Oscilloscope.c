@@ -35,7 +35,7 @@ void OscilloscopeServiceFunction(void) {
             HAL_TIM_Base_Start_IT(&htim11);
             timIntStart = 1;
         }
-        if(msTickCount - msTickStart == 1000) {
+        if(msTickCount - msTickStart == 200) {
             HAL_TIM_Base_Stop_IT(&htim11);
             timIntStart = 0;
             msTickCount = 0;
