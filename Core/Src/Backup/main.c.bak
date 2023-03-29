@@ -20,13 +20,14 @@
 #include "main.h"
 #include "adc.h"
 #include "dac.h"
+#include "dma.h"
 #include "iwdg.h"
 #include "gpio.h"
 #include "fsmc.h"
-#include "stm32f4xx_hal_iwdg.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include <Oscilloscope.h>
 #include <UserInterface.h>
 /* USER CODE END Includes */
 
@@ -90,13 +91,14 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
+  MX_DMA_Init();
   MX_ADC1_Init();
   MX_DAC_Init();
   MX_FSMC_Init();
   MX_IWDG_Init();
   /* USER CODE BEGIN 2 */
-  
   InitializeGUI();
+  InitializeOscilloscope();
     // Initialize GUI
   /* USER CODE END 2 */
 
@@ -106,6 +108,7 @@ int main(void)
   {
     HAL_IWDG_Refresh(&hiwdg);
     // Feed watchdog timer
+    OscilloscopeServiceFunction();
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

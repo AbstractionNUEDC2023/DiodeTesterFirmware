@@ -22,6 +22,7 @@
 #include "dac.h"
 #include "dma.h"
 #include "iwdg.h"
+#include "tim.h"
 #include "gpio.h"
 #include "fsmc.h"
 
@@ -96,6 +97,7 @@ int main(void)
   MX_DAC_Init();
   MX_FSMC_Init();
   MX_IWDG_Init();
+  MX_TIM11_Init();
   /* USER CODE BEGIN 2 */
   InitializeGUI();
   InitializeOscilloscope();
