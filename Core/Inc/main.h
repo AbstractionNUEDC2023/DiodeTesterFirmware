@@ -41,7 +41,8 @@ extern "C" {
 
 /* Exported constants --------------------------------------------------------*/
 /* USER CODE BEGIN EC */
-extern uint32_t usTickCount;
+extern uint8_t timIntStart;
+extern uint32_t msTickCount;
 /* USER CODE END EC */
 
 /* Exported macro ------------------------------------------------------------*/

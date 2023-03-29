@@ -41,7 +41,7 @@
 
 /* Private variables ---------------------------------------------------------*/
 /* USER CODE BEGIN PV */
-uint32_t usTickCount = 0;
+uint32_t msTickCount = 0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -206,7 +206,7 @@ void SysTick_Handler(void)
 void TIM1_TRG_COM_TIM11_IRQHandler(void)
 {
   /* USER CODE BEGIN TIM1_TRG_COM_TIM11_IRQn 0 */
-  usTickCount = usTickCount != 0xFFFFFFFF ? usTickCount + 1 : 0;
+  msTickCount++;
   /* USER CODE END TIM1_TRG_COM_TIM11_IRQn 0 */
   HAL_TIM_IRQHandler(&htim11);
   /* USER CODE BEGIN TIM1_TRG_COM_TIM11_IRQn 1 */
