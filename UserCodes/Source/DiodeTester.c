@@ -9,7 +9,7 @@ void InitializeDiodeTester(){
     HAL_DAC_Start(&hdac, DAC_CHANNEL_2);
     HAL_ADC_Start(&hadc1);
     HAL_DAC_SetValue(&hdac, DAC_CHANNEL_2, DAC_ALIGN_12B_L, 0);
-    ILI9341DrawString(1, 5, "Status: Run ", Font_07x10, RGB565_CYAN, RGB565_ORANGE);
+    ILI9341DrawString(1, 5, "Status:STOP", Font_07x10, RGB565_CYAN, RGB565_ORANGE);
     ILI9341DrawString(1, 275, "VerticalGrid: 2.5uS/div           ", Font_07x10, RGB565_CYAN, RGB565_ORANGE);
     ILI9341DrawString(1, 263, "HorizontalGrid: 660mV/div         ", Font_07x10, RGB565_CYAN, RGB565_ORANGE);
     ILI9341DrawString(162, 5, "Mode: Test", Font_07x10, RGB565_CYAN, RGB565_ORANGE);

@@ -55,14 +55,14 @@ uint8_t swCnt = 0;
 void KeyScaner(void) {
   if(HAL_GPIO_ReadPin(ModeSelect_GPIO_Port, ModeSelect_Pin) == GPIO_PIN_RESET) {
     swCnt++;
-    if(swCnt >= 3) {
+    if(swCnt >= 30) {
       ModeChangeFlag = 1;
       Mode = Mode == 0 ? 1 : 0;
       swCnt = 0;
     }
   } else if(HAL_GPIO_ReadPin(RunStop_GPIO_Port, RunStop_Pin) == GPIO_PIN_RESET) {
     swCnt++;
-    if(swCnt >= 3) {
+    if(swCnt >= 30) {
       Running = Running == 0 ? 1 : 0;
       swCnt = 0;
     }
