@@ -23,10 +23,11 @@
 #include "iwdg.h"
 #include "gpio.h"
 #include "fsmc.h"
+#include "stm32f4xx_hal_iwdg.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include <UserInterface.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -94,13 +95,17 @@ int main(void)
   MX_FSMC_Init();
   MX_IWDG_Init();
   /* USER CODE BEGIN 2 */
-
+  
+  InitializeGUI();
+    // Initialize GUI
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+    HAL_IWDG_Refresh(&hiwdg);
+    // Feed watchdog timer
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
