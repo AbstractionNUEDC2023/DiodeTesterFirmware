@@ -110,11 +110,13 @@ int main(void)
     HAL_IWDG_Refresh(&hiwdg);
     if(flags.deviceModeFlag == 0 && flags.deviceModeChangeFlag) {
       DiodeTesterDeinitialize();
+      GUIClearCurve(1);
       OscillscopeInitialize();
       GUIUpdateStatus();
       flags.deviceModeChangeFlag = 0;
     } else if (flags.deviceModeFlag == 1 && flags.deviceModeChangeFlag) {
       OscillscopeDeinitialize();
+      GUIClearCurve(0);
       DiodeTesterInitialize();
       GUIUpdateStatus();
       flags.deviceModeChangeFlag = 0;

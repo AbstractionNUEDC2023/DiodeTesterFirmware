@@ -57,6 +57,33 @@ void GUIUpdateGrid(const char* HorizontalGridText, uint16_t HorizontalGridTextLe
     ILI9341DrawString(1, 302, "@Abstraction", Font_11x18, RGB565_PINK, RGB565_ORANGE);
 }
 
+/**
+ * @brief Clear Curve On Screen
+ * 
+ * @param clearMode : 0 for Oscillscope, 1 for DiodeTester
+ * @return * void 
+ */
+void GUIClearCurve(uint8_t clearMode) {
+    uint16_t fillColor;
+    for(uint8_t i = 0; i < 200; i++){
+        fillColor = RGB565_BLACK;
+        if(i == 0 || i == 40 || i == 80 || i == 120 || i == 160 || i == 200
+            || currentCurveArray[i] == 0 
+            || currentCurveArray[i] == 40
+            || currentCurveArray[i] == 80
+            || currentCurveArray[i] == 120
+            || currentCurveArray[i] == 160
+            || currentCurveArray[i] == 200) {
+                fillColor = RGB565_ORANGE;
+        }
+        if (clearMode == 0) {
+            ILI9341DrawPixel(20 + i, 240 - currentCurveArray[i], fillColor);
+        } else {
+            ILI9341DrawPixel(20 + currentCurveArray[i], 240 - i, fillColor);
+        }
+    }
+}
+
 void GUIDrawCurveOnGrids(uint32_t *PointsYArray) {
     uint16_t fillColor;
     for(uint8_t i = 0; i < 200; i++){
@@ -70,9 +97,15 @@ void GUIDrawCurveOnGrids(uint32_t *PointsYArray) {
             || currentCurveArray[i] == 200) {
                 fillColor = RGB565_ORANGE;
             }
-        ILI9341DrawPixel(i + 20, 240 - currentCurveArray[i], fillColor);
-        currentCurveArray[i] = PointsYArray[i];
-        ILI9341DrawPixel(i + 20, 240 - currentCurveArray[i], RGB565_GREEN);
+        if (flags.deviceModeFlag == 0) {
+            ILI9341DrawPixel(20 + i, 240 - currentCurveArray[i], fillColor);
+            currentCurveArray[i] = PointsYArray[i];
+            ILI9341DrawPixel(20 + i, 240 - currentCurveArray[i], RGB565_GREEN);
+        } else {
+            ILI9341DrawPixel(20 + currentCurveArray[i], 240 - i, fillColor);
+            currentCurveArray[i] = PointsYArray[i];
+            ILI9341DrawPixel(20 + currentCurveArray[i], 240 - i, RGB565_GREEN);
+        }
     }
     // Clear Last Curve And Draw New Curve
 }

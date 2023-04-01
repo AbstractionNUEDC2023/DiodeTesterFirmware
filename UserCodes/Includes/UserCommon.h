@@ -17,6 +17,7 @@ extern uint32_t adcBuffer[200];
 
 void GUIInitialize(void);
 void GUIUpdateStatus(void);
+void GUIClearCurve(uint8_t clearMode);
 void GUIDrawCurveOnGrids(uint32_t *PointsYArray);
 
 void OscillscopeInitialize(void);
