@@ -27,7 +27,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include <UserCommon.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -59,7 +59,10 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
+// void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc) {
+//   if(hadc->Instance == hadc3.Instance)
+//     flags.adcConvCpltFlag = 1;
+// }
 /* USER CODE END 0 */
 
 /**
@@ -91,18 +94,35 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_IWDG_Init();
-  MX_ADC2_Init();
   MX_DAC_Init();
   MX_FSMC_Init();
   MX_TIM6_Init();
+  MX_ADC3_Init();
   /* USER CODE BEGIN 2 */
-
+  GUIInitialize();
+  OscillscopeInitialize();
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+    HAL_IWDG_Refresh(&hiwdg);
+    if(flags.deviceModeFlag == 0 && flags.deviceModeChangeFlag) {
+      DiodeTesterDeinitialize();
+      OscillscopeInitialize();
+      GUIUpdateStatus();
+      flags.deviceModeChangeFlag = 0;
+    } else if (flags.deviceModeFlag == 1 && flags.deviceModeChangeFlag) {
+      OscillscopeDeinitialize();
+      DiodeTesterInitialize();
+      GUIUpdateStatus();
+      flags.deviceModeChangeFlag = 0;
+    } else if (flags.deviceModeFlag == 0) {
+      OscillscopeServiceFunction();
+    } else {
+      DiodeTesterServiceFunction();
+    }
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
