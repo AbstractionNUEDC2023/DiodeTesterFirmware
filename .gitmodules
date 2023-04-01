@@ -1,3 +1,0 @@
-[submodule "Drivers/ILI9341"]
-	path = Drivers/ILI9341
-	url = git@github.com:AbstractionNUEDC2023/ILI9341Driver.git
