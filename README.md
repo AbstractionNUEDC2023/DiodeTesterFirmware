@@ -38,4 +38,4 @@ This particular project needs to build a specific circuit.Which is a V-I transfo
 # Known issues
 
 1. V-I Converter has no output clamping, which may cause circuit outputing a dangerous high voltage that will destroy internal adc of stm32
-2. Key scan has serious problems that long push will be recgonize as multiple pushes.
+2. Key scan has serious problems that long push will be recgonized as multiple pushes.
