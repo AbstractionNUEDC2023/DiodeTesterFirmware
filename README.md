@@ -16,6 +16,10 @@ Compiling this project is very simple.You only need to run this:
 ```
 make -j
 ```
+## Oscillscope Mode And VI Curve Ploting Mode
+    By default, this firmware starting at Oscilloscope Mode.You can change into VI Curve Ploting Mode by push K1 on the stm32 board.Notice that you must stop the Oscilloscope before changing the mode.Because that if don't stop the Oscilloscope and change the mode may cause oscilloscope curve lays above the VI curve.
+## Start and Stop
+    On Oscilloscope Mode, this firmware will run all the time by default.You can stop it by pushing K0 on the stm32 board.And on VI Curve Plotting Mode this firmware will run a VI curve scan and then stop.You can also push K0 on the stm32 board to restart another VI curve scan.
 # Hardware
 This particular project needs to build a specific circuit.Which is a V-I transformer.My solution just like this:  
 ![SCH](./Sch.png)
@@ -23,3 +27,4 @@ This particular project needs to build a specific circuit.Which is a V-I transfo
 # Known issues
 
 1. V-I Converter has no output clamping, which may cause circuit outputing a dangerous high voltage that will destroy internal adc of stm32
+2. Key scan has serious problems that long push will be recgonize as multiple pushes.

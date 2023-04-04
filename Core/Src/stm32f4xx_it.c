@@ -66,6 +66,8 @@ void KeyScan(void) {
     sw0Cnt++;
     if(sw0Cnt >= 50) {
       sw0Cnt = 0;
+      flags.deviceRunFlag = 0;
+      // Always stop running before mode change
       flags.deviceModeFlag = flags.deviceModeFlag? 0 : 1;
       flags.deviceModeChangeFlag = 1;
     }
