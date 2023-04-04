@@ -22,4 +22,4 @@ This particular project needs to build a specific circuit.Which is a V-I transfo
 
 # Known issues
 
-1. V-I Converter has no output clamping, it may output a dangerous high voltage that will destroy internal adc of stm32
+1. V-I Converter has no output clamping, which may cause circuit outputing a dangerous high voltage that will destroy internal adc of stm32
