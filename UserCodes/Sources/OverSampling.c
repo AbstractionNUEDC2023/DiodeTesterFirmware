@@ -6,6 +6,8 @@
 uint16_t GetOverSamplingADCValue(ADC_HandleTypeDef* hadc) {
     uint32_t overSamplingResult = 0;
     for(uint16_t i = 0; i <= 255; i++) {
+        HAL_IWDG_Refresh(&hiwdg);
+        // Refresh IWDG Here Because This Function May Take A Long Time To Complete, Prevent IWDG Form Overflow And Reset Device
         HAL_ADC_Start(hadc);
         HAL_ADC_PollForConversion(hadc, 50);
         while(flags.adcConvCpltFlag == 0){
@@ -14,8 +16,6 @@ uint16_t GetOverSamplingADCValue(ADC_HandleTypeDef* hadc) {
         // Waiting for convert finish
         HAL_ADC_Stop(hadc);
         overSamplingResult = overSamplingResult + HAL_ADC_GetValue(hadc);
-        HAL_IWDG_Refresh(&hiwdg);
-        // Refresh IWDG Here Because This Function May Take A Long Time To Complete, Prevent IWDG Form Overflow And Reset Device
     }
     overSamplingResult = overSamplingResult >> 4;
     return overSamplingResult;

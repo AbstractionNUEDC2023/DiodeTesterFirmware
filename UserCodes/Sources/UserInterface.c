@@ -44,8 +44,13 @@ void GUIUpdateStatus(void) {
     }
     if(flags.deviceModeFlag) {
         ILI9341DrawString(163, 5, "Mode:Test", Font_07x10, RGB565_CYAN, RGB565_ORANGE);
+        ILI9341DrawString(1, 265, "HorizontalGrid: 660mV/div", Font_07x10, RGB565_CYAN, RGB565_ORANGE);
+        ILI9341DrawString(1, 277, "VerticalGrid: 1.375mA/div", Font_07x10, RGB565_CYAN, RGB565_ORANGE);
     } else {
         ILI9341DrawString(163, 5, "Mode:Wave", Font_07x10, RGB565_CYAN, RGB565_ORANGE);
+        ILI9341DrawString(1, 265, "HorizontalGrid: 660mV/div", Font_07x10, RGB565_CYAN, RGB565_ORANGE);
+        ILI9341DrawString(1, 277, "VerticalGrid: 2.5uS/div      ", Font_07x10, RGB565_CYAN, RGB565_ORANGE);
+        // DO NOT Delete Spaces at the end of the string, it clears last character shown
     }
 }
 
