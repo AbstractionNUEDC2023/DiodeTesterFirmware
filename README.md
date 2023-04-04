@@ -1,5 +1,5 @@
 # What's this?
-This repository stores Diode tester project's firmware source code.
+This repository stores Diode tester project's firmware source code for NUEDC traning homework.
 # Developing On Linux
 ## Using GNU Make + arm-none-eabi-gcc
 This is the way I use.
