@@ -1,0 +1,103 @@
+<!DOCTYPE CrossStudio_Project_File>
+<solution Name="NUEDC_DiodeTesterFirmware" target="8" version="2">
+  <configuration Name="Internal" Platform="ARM" hidden="Yes" />
+  <configuration Name="NUEDC_DiodeTesterFirmware" hidden="Yes" />
+  <configuration
+    Name="NUEDC_DiodeTesterFirmware Internal"
+    inherited_configurations="Internal;NUEDC_DiodeTesterFirmware" />
+  <project Name="NUEDC_DiodeTesterFirmware">
+    <configuration
+      Name="Common"
+      arm_architecture="v7EM"
+      arm_compiler_variant="SEGGER"
+      arm_core_type="Cortex-M4"
+      arm_endian="Little"
+      arm_fpu_type="FPv4-SP-D16"
+      arm_linker_variant="SEGGER"
+      arm_target_device_name="STM32F407ZG"
+      arm_target_interface_type="SWD"
+      debug_start_from_entry_point_symbol="No"
+      debug_target_connection="J-Link"
+      link_linker_script_file="$(StudioDir)/samples/SEGGER_Flash.icf"
+      linker_section_placements_segments="FLASH1 RX 0x08000000 0x00100000;RAM1 RWX 0x20000000 0x00020000;"
+      project_directory=""
+      project_type="Executable" />
+    <configuration
+      LIBRARY_IO_TYPE="SEMIHOST (host-formatted)"
+      Name="Internal" />
+    <configuration
+      Name="NUEDC_DiodeTesterFirmware"
+      arm_architecture="v7EM"
+      arm_core_type="Cortex-M4"
+      arm_endian="Little"
+      arm_fpu_type="FPv4-SP-D16"
+      arm_target_device_name="STM32F407ZG"
+      build_intermediate_directory="NUEDC_DiodeTesterFirmware/Obj"
+      build_output_directory="NUEDC_DiodeTesterFirmware/Exe"
+      c_preprocessor_definitions="USE_HAL_DRIVER;STM32F407xx"
+      c_user_include_directories=";./../Core/Inc;./../Drivers/STM32F4xx_HAL_Driver/Inc;./../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;./../Drivers/CMSIS/Device/ST/STM32F4xx/Include;./../Drivers/CMSIS/Include;./../UserCodes/Includes;./../UserCodes/ILI9341"
+      linker_section_placements_segments="FLASH1 RX 0x08000000 0x00100000;RAM1 RWX 0x20000000 0x00020000;" />
+    <folder Name="Application">
+      <folder Name="EWARM">
+        <file file_name="./startup_stm32f407xx.s">
+          <configuration Name="Internal" build_exclude_from_build="Yes" />
+        </file>
+      </folder>
+      <folder Name="User">
+        <folder Name="Core">
+          <file file_name="./../Core/Src/adc.c" />
+          <file file_name="./../Core/Src/dac.c" />
+          <file file_name="./../Core/Src/fsmc.c" />
+          <file file_name="./../Core/Src/gpio.c" />
+          <file file_name="./../Core/Src/iwdg.c" />
+          <file file_name="./../Core/Src/main.c" />
+          <file file_name="./../Core/Src/stm32f4xx_hal_msp.c" />
+          <file file_name="./../Core/Src/stm32f4xx_it.c" />
+          <file file_name="./../Core/Src/tim.c" />
+        </folder>
+        <folder Name="FunctionalCode">
+          <file file_name="./../UserCodes/Sources/DiodeTester.c" />
+          <file file_name="./../UserCodes/ILI9341/ILI9341.c" />
+          <file file_name="./../UserCodes/ILI9341/ILI9341Test.c" />
+          <file file_name="./../UserCodes/Sources/Oscillscope.c" />
+          <file file_name="./../UserCodes/Sources/UserInterface.c" />
+          <file file_name="./../UserCodes/ILI9341/Fonts/fonts.c" />
+        </folder>
+      </folder>
+    </folder>
+    <folder Name="Drivers">
+      <folder Name="CMSIS">
+        <file file_name="./../Core/Src/system_stm32f4xx.c" />
+      </folder>
+      <folder Name="STM32F4xx_HAL_Driver">
+        <file file_name="./../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c" />
+        <file file_name="./../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc.c" />
+        <file file_name="./../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc_ex.c" />
+        <file file_name="./../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c" />
+        <file file_name="./../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dac.c" />
+        <file file_name="./../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dac_ex.c" />
+        <file file_name="./../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c" />
+        <file file_name="./../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c" />
+        <file file_name="./../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c" />
+        <file file_name="./../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c" />
+        <file file_name="./../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c" />
+        <file file_name="./../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c" />
+        <file file_name="./../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c" />
+        <file file_name="./../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_iwdg.c" />
+        <file file_name="./../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c" />
+        <file file_name="./../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c" />
+        <file file_name="./../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c" />
+        <file file_name="./../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c" />
+        <file file_name="./../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_sram.c" />
+        <file file_name="./../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c" />
+        <file file_name="./../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c" />
+        <file file_name="./../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_adc.c" />
+        <file file_name="./../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_fsmc.c" />
+      </folder>
+    </folder>
+    <folder Name="Internal Files">
+      <file file_name="$(StudioDir)/samples/Cortex_M_Startup.s" />
+      <file file_name="$(StudioDir)/samples/SEGGER_THUMB_Startup.s" />
+    </folder>
+  </project>
+</solution>
