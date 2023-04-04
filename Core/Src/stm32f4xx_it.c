@@ -53,27 +53,35 @@
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 uint8_t sw0Cnt = 0;
+uint32_t currentTick = 0;
+uint32_t lastTrigTick = 0;
 void KeyScan(void) {
+  currentTick++;
   if(HAL_GPIO_ReadPin(RunBtn_GPIO_Port, RunBtn_Pin) == GPIO_PIN_RESET) {
     sw0Cnt++;
     if(sw0Cnt >= 50) {
       sw0Cnt = 0;
-      if (flags.deviceModeFlag == 0)
-        flags.deviceRunFlag = flags.deviceRunFlag ? 0 : 1;
-      else
-        flags.deviceRunFlag = flags.deviceRunFlag == 0 ? 1 : 1;
-      // Never Interrupt VI Curve Scan
-      GUIUpdateStatus();
+      if(currentTick - lastTrigTick >= 500) {
+        if (flags.deviceModeFlag == 0)
+          flags.deviceRunFlag = flags.deviceRunFlag ? 0 : 1;
+        else
+          flags.deviceRunFlag = flags.deviceRunFlag == 0 ? 1 : 1;
+        // Never Interrupt VI Curve Scan
+        lastTrigTick = currentTick;
+        GUIUpdateStatus();
+      }
     }
   }
   if(HAL_GPIO_ReadPin(ModeBtn_GPIO_Port, ModeBtn_Pin) == GPIO_PIN_RESET) {
     sw0Cnt++;
     if(sw0Cnt >= 50) {
       sw0Cnt = 0;
-      flags.deviceRunFlag = 0;
-      // Always stop running before mode change
-      flags.deviceModeFlag = flags.deviceModeFlag? 0 : 1;
-      flags.deviceModeChangeFlag = 1;
+      if(currentTick - lastTrigTick >= 500) {
+        flags.deviceRunFlag = 0;
+        // Always stop running before mode change
+        flags.deviceModeFlag = flags.deviceModeFlag? 0 : 1;
+        flags.deviceModeChangeFlag = 1;
+      }
     }
   }
 }
