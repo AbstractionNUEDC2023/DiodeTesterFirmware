@@ -58,7 +58,11 @@ void KeyScan(void) {
     sw0Cnt++;
     if(sw0Cnt >= 50) {
       sw0Cnt = 0;
-      flags.deviceRunFlag = flags.deviceRunFlag ? 0 : 1;
+      if (flags.deviceModeFlag == 0)
+        flags.deviceRunFlag = flags.deviceRunFlag ? 0 : 1;
+      else
+        flags.deviceRunFlag = flags.deviceRunFlag == 0 ? 1 : 1;
+      // Never Interrupt VI Curve Scan
       GUIUpdateStatus();
     }
   }

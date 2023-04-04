@@ -1,4 +1,5 @@
 #include <adc.h>
+#include <iwdg.h>
 #include <UserCommon.h>
 
 
@@ -13,6 +14,8 @@ uint16_t GetOverSamplingADCValue(ADC_HandleTypeDef* hadc) {
         // Waiting for convert finish
         HAL_ADC_Stop(hadc);
         overSamplingResult = overSamplingResult + HAL_ADC_GetValue(hadc);
+        HAL_IWDG_Refresh(&hiwdg);
+        // Refresh IWDG Here Because This Function May Take A Long Time To Complete, Prevent IWDG Form Overflow And Reset Device
     }
     overSamplingResult = overSamplingResult >> 4;
     return overSamplingResult;
