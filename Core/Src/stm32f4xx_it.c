@@ -77,10 +77,10 @@ void KeyScan(void) {
     if(sw0Cnt >= 50) {
       sw0Cnt = 0;
       if(currentTick - lastTrigTick >= 500) {
-        flags.deviceRunFlag = 0;
-        // Always stop running before mode change
-        flags.deviceModeFlag = flags.deviceModeFlag? 0 : 1;
-        flags.deviceModeChangeFlag = 1;
+        if(flags.deviceRunFlag == 0) {
+          flags.deviceModeFlag = flags.deviceModeFlag? 0 : 1;
+          flags.deviceModeChangeFlag = 1;
+        }
       }
     }
   }

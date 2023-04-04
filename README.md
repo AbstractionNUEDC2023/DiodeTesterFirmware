@@ -28,7 +28,7 @@ On windows you can use either make + arm-none-eabi-gcc or MDK-ARM, Segger Embedd
 # Hardware Usage
 
 ## Oscillscope Mode And VI Curve Ploting Mode
-By default, this firmware starting at Oscilloscope Mode.You can change into VI Curve Ploting Mode by push K1 on the stm32 board.Notice that you must stop the Oscilloscope before changing the mode.Because that if don't stop the Oscilloscope and change the mode may cause oscilloscope curve lays above the VI curve.
+By default, this firmware starting at Oscilloscope Mode.You can change into VI Curve Ploting Mode by push K1 on the stm32 board.~~Notice that you must stop the Oscilloscope before changing the mode.Because that if don't stop the Oscilloscope and change the mode may cause oscilloscope curve lays above the VI curve.~~ (Fixed by an Operating logic change.Now you can't change mode while runing anymore)
 ## Start and Stop
 On Oscilloscope Mode, this firmware will run all the time by default.You can stop it by pushing K0 on the stm32 board.And on VI Curve Plotting Mode this firmware will run a VI curve scan and then stop.You can also push K0 on the stm32 board to restart another VI curve scan.
 # Hardware
