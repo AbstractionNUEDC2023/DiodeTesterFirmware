@@ -74,7 +74,8 @@ Core/Src/iwdg.c \
 Core/Src/tim.c \
 UserCodes/Sources/Oscillscope.c \
 UserCodes/Sources/UserInterface.c \
-UserCodes/Sources/DiodeTester.c
+UserCodes/Sources/DiodeTester.c \
+UserCodes/Sources/OverSampling.c
 
 # ASM sources
 ASM_SOURCES =  \

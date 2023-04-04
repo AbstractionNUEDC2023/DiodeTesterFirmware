@@ -1,6 +1,7 @@
 #ifndef __NUEDC_DIODE_TESTER_FIRMWARE_COMMON_HEADER__
 #define __NUEDC_DIODE_TESTER_FIRMWARE_COMMON_HEADER__
 
+#include <adc.h>
 #include <stdint.h>
 
 typedef struct {
@@ -27,5 +28,7 @@ void OscillscopeDeinitialize(void);
 void DiodeTesterInitialize(void);
 void DiodeTesterServiceFunction(void);
 void DiodeTesterDeinitialize(void);
+
+uint16_t GetOverSamplingADCValue(ADC_HandleTypeDef* hadc);
 
 #endif

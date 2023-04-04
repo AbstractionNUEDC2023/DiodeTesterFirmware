@@ -62,6 +62,7 @@
           <file file_name="./../UserCodes/Sources/Oscillscope.c" />
           <file file_name="./../UserCodes/Sources/UserInterface.c" />
           <file file_name="./../UserCodes/ILI9341/Fonts/fonts.c" />
+          <file file_name="./../UserCodes/Sources/OverSampling.c" />
         </folder>
       </folder>
     </folder>

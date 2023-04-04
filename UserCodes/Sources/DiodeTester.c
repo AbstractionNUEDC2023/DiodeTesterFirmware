@@ -16,15 +16,9 @@ void DiodeTesterServiceFunction(void) {
             while(flags.dacConvCpltFlag == 0);
             HAL_DAC_SetValue(&hdac, DAC_CHANNEL_2, DAC_ALIGN_12B_R, 20 * i);
             while(HAL_IS_BIT_SET(HAL_DAC_GetState(&hdac), HAL_DAC_STATE_BUSY));
-            HAL_ADC_Start(&hadc3);
-            HAL_ADC_PollForConversion(&hadc3, 50);
-            while(flags.adcConvCpltFlag == 0){
-                flags.adcConvCpltFlag = HAL_IS_BIT_SET(HAL_ADC_GetState(&hadc3), HAL_ADC_STATE_REG_EOC);
-            }
-            adcBuffer[i] = HAL_ADC_GetValue(&hadc3);
+            adcBuffer[i] = GetOverSamplingADCValue(&hadc3);
             flags.adcConvCpltFlag = 0;
-            HAL_ADC_Stop(&hadc3);
-            adcBuffer[i] = ((float)(200.0 / 4096) * adcBuffer[i]);
+            adcBuffer[i] = ((float)(200.0 / 65535) * adcBuffer[i]);
         }
         HAL_TIM_Base_Stop_IT(&htim6);
         GUIDrawCurveOnGrids(adcBuffer);

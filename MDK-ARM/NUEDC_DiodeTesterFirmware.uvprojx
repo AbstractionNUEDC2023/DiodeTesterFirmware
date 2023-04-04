@@ -596,6 +596,11 @@
               <FileType>1</FileType>
               <FilePath>../UserCodes/Sources/UserInterface.c</FilePath>
             </File>
+            <File>
+              <FileName>OverSampling.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>../UserCodes/Sources/OverSampling.c</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>

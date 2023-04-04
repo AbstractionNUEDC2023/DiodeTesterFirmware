@@ -1129,6 +1129,9 @@
         <file>
           <name>$PROJ_DIR$/../UserCodes/ILI9341/Fonts/fonts.c</name>
         </file>
+        <file>
+          <name>$PROJ_DIR$/../UserCodes/Sources/OverSampling.c</name>
+        </file>
       </group>
     </group>
   </group>
