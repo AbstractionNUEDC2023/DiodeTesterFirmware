@@ -32,7 +32,7 @@ By default, this firmware starting at Oscilloscope Mode.You can change into VI C
 ## Start and Stop
 On Oscilloscope Mode, this firmware will run all the time by default.You can stop it by pushing K0 on the stm32 board.And on VI Curve Plotting Mode this firmware will run a VI curve scan and then stop.You can also push K0 on the stm32 board to restart another VI curve scan.
 # Hardware
-This particular project needs to build a specific circuit.Which is a V-I transformer.My solution just like this:  
+This particular project needs to build a specific circuit which is a V-I converter.My solution just like this:  
 ![SCH](./Sch.png)
 
 # Known issues
